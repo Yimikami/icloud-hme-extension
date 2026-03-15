@@ -1,0 +1,16 @@
+{
+  "name": "icloud-hme-extension",
+  "version": "1.0.0",
+  "description": "iCloud Hide My Email Browser Extension",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/background.js --bundle --outfile=dist/background.bundle.js && esbuild src/content.js --bundle --outfile=dist/content.bundle.js && esbuild src/popup.js --bundle --outfile=dist/popup.bundle.js"
+  },
+  "dependencies": {
+    "@foxt/js-srp": "^0.0.3",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.4"
+  }
+}

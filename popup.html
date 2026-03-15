@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>iCloud Hide My Email</title>
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; width: 320px; padding: 16px; margin: 0; background: #fdfdfd; color: #333; }
+    h2 { margin-top: 0; font-size: 18px; text-align: center; }
+    .hidden { display: none !important; }
+    input { width: 100%; box-sizing: border-box; padding: 8px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 6px; }
+    button { width: 100%; padding: 10px; background: #007aff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+    button:hover { background: #006ae6; }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    .error { color: #d93025; font-size: 13px; margin-bottom: 12px; text-align: center; }
+    .success { color: #1e8e3e; font-size: 13px; margin-bottom: 12px; text-align: center; }
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loggedInView { text-align: center; }
+    #loggedInView p { font-size: 14px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <h2>Hide My Email</h2>
+  
+  <div id="loadingView">
+    <p style="text-align:center; color:#666;">Loading...</p>
+  </div>
+
+  <div id="unlockView" class="hidden">
+    <p style="font-size:13px; color:#555; text-align:center; margin-bottom:16px;">Enter your Passphrase to unlock session</p>
+    <div id="unlockError" class="error hidden"></div>
+    <form id="unlockForm">
+      <input type="password" id="unlockPassphrase" placeholder="Passphrase" required>
+      <button type="submit" id="unlockBtn">Unlock</button>
+      <br><br>
+      <button type="button" id="unlockLogoutBtn" style="background:#555;">Clear Session</button>
+    </form>
+  </div>
+
+  <div id="loginView" class="hidden">
+    <p style="font-size:13px; color:#555; text-align:center; margin-bottom:16px;">Log in with your Apple ID</p>
+    <div id="errorMsg" class="error hidden"></div>
+    <form id="loginForm">
+      <input type="text" id="appleId" placeholder="Apple ID" required>
+      <input type="password" id="password" placeholder="Apple ID Password" required>
+      <input type="password" id="loginPassphrase" placeholder="Set a Session Passphrase" required>
+      <button type="submit" id="loginBtn">Sign In</button>
+    </form>
+  </div>
+
+  <div id="twofaView" class="hidden">
+    <p style="font-size:13px; color:#555; text-align:center; margin-bottom:16px;">Enter the 2FA code sent to your devices</p>
+    <div id="twofaError" class="error hidden"></div>
+    <form id="twofaForm">
+      <input type="text" id="twofaCode" placeholder="6-digit code" required autocomplete="off">
+      <button type="submit" id="twofaBtn">Verify</button>
+    </form>
+  </div>
+
+  <div id="loggedInView" class="hidden">
+    <p>You are logged in.</p>
+    <button id="logoutBtn" style="background:#d93025; margin-top:20px;">Sign Out</button>
+  </div>
+
+  <script src="dist/popup.bundle.js"></script>
+</body>
+</html>
