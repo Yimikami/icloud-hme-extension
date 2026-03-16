@@ -6,12 +6,11 @@ const LANG_CODE = "en-en";
 
 let clientId = uuidv4();
 
-export function getQueryParams(dsid) {
+export function getQueryParams() {
   return new URLSearchParams({
     clientBuildNumber: CLIENT_BUILD_NUMBER,
     clientMasteringNumber: CLIENT_MASTERING_NUMBER,
     clientId,
-    dsid,
   }).toString();
 }
 

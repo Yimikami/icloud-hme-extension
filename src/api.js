@@ -2,7 +2,7 @@ import { getQueryParams, LANG_CODE } from "./config.js";
 
 function buildUrl(session, endpoint) {
   const base = session.baseUrl || `https://p188-maildomainws.icloud.com`;
-  return `${base}${endpoint}?${getQueryParams(session.dsid)}`;
+  return `${base}${endpoint}?${getQueryParams()}`;
 }
 
 async function request(session, endpoint, method, body = null) {
@@ -15,6 +15,7 @@ async function request(session, endpoint, method, body = null) {
     headers: {
       "Accept": "*/*",
       "Content-Type": "text/plain",
+      "X-Apple-Dsid": session.dsid,
     }
   };
   
